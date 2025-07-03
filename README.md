@@ -5,9 +5,10 @@
 * **CMAKE_CURRENT_SOURCE_DIR**
   * 指向当前正在处理的`CMakeLists.txt`文件的目录路径
   * 当 CMake 处理嵌套的`CMakeLists.txt`，`CMAKE_CURRENT_SOURCE_DIR`会随着当前处理的`CMakeLists.txt`文件变化，可能指向子目录。
+
  * **CMAKE_CURRENT_BINARY_DIR**
-  * 指向当前`CMakeLists.txt`文件在构建过程中的输出目录。这个目录是`CMake`在生成构建系统（如`Makefile`、`Ninja`文件或`Visual Studio`解决方案）时用于存放生成文件的路径。
-  * 当`CMake`处理嵌套的`CMakeLists.txt`，`CMAKE_CURRENT_BINARY_DIR`会随着当前处理的`CMakeLists.txt`变化，可能指向主构建目录或子目录的构建目录。
+   * 指向当前`CMakeLists.txt`文件在构建过程中的输出目录。这个目录是`CMake`在生成构建系统（如`Makefile`、`Ninja`文件或`Visual Studio`解决方案）时用于存放生成文件的路径。
+   * 当`CMake`处理嵌套的`CMakeLists.txt`，`CMAKE_CURRENT_BINARY_DIR`会随着当前处理的`CMakeLists.txt`变化，可能指向主构建目录或子目录的构建目录。
 
 ## Config.h.in
 在`CMake`项目中，`config.h.in`（或类似命名的`.h.in`文件）是一个头文件模板，用于通过`CMake`的 `configure_file`命令生成最终的头文件（通常是`config.h`）。其中定义的变量（通常是`C/C++`预处理器宏）在代码中起到传递配置信息的作用。
