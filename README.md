@@ -8,7 +8,7 @@
 
  * **CMAKE_CURRENT_BINARY_DIR**
    * 指向当前`CMakeLists.txt`文件在构建过程中的输出目录。这个目录是`CMake`在生成构建系统（如`Makefile`、`Ninja`文件或`Visual Studio`解决方案）时用于存放生成文件的路径。
-   * 当`CMake`处理嵌套的`CMakeLists.txt`，`CMAKE_CURRENT_BINARY_DIR`会随着当前处理的`CMakeLists.txt`变化，可能指向主构建目录或子目录的构建目录。
+  * 当`CMake`处理嵌套的`CMakeLists.txt`，`CMAKE_CURRENT_BINARY_DIR`会随着当前处理的`CMakeLists.txt`变化，可能指向主构建目录或子目录的构建目录。
 
 ## Config.h.in
 在`CMake`项目中，`config.h.in`（或类似命名的`.h.in`文件）是一个头文件模板，用于通过`CMake`的 `configure_file`命令生成最终的头文件（通常是`config.h`）。其中定义的变量（通常是`C/C++`预处理器宏）在代码中起到传递配置信息的作用。
@@ -29,8 +29,8 @@
 ```
 add_subdirectory(<source_dir> [<binary_dir>] [EXCLUDE_FROM_ALL])
 ```
-* **<source_dir>**：子目录的路径，包含子目录的`CMakeLists.txt`文件。通常是相对于当前`CMakeLists.txt`的路径。
-* **<binary_dir>**（可选）：子目录的构建输出目录，指定生成文件（如对象文件、可执行文件）的存放位置。如果未指定，`CMake`使用主项目的构建目录结构。
+* **source_dir**：子目录的路径，包含子目录的`CMakeLists.txt`文件。通常是相对于当前`CMakeLists.txt`的路径。
+* **binary_dir**（可选）：子目录的构建输出目录，指定生成文件（如对象文件、可执行文件）的存放位置。如果未指定，`CMake`使用主项目的构建目录结构。
 * **EXCLUDE_FROM_ALL**（可选）：表示子目录中的目标不会自动包含在父项目的默认构建目标中，只有显式指定时才会构建。
 
 ## target_compile_definitions
@@ -40,12 +40,12 @@ add_subdirectory(<source_dir> [<binary_dir>] [EXCLUDE_FROM_ALL])
 target_compile_definitions(<target> [PUBLIC|PRIVATE|INTERFACE] <definitions>...)
 ```
 
-* **<target>**：目标名称，例如通过`add_executable`或`add_library`定义的可执行文件或库。
+* **target**：目标名称，例如通过`add_executable`或`add_library`定义的可执行文件或库。
 * **访问修饰符**：
   * `PUBLIC`：宏定义对目标本身及其依赖的目标都可见。
   * `PRIVATE`：宏定义仅对目标本身可见，不影响依赖它的目标。
   * `INTERFACE`：宏定义仅对依赖该目标的其他目标可见，目标本身不可见。
-* **<definitions>** 要添加的宏定义，格式为：
+* **definitions** 要添加的宏定义，格式为：
   * 简单宏：`MY_MACRO`（等价于`#define MY_MACRO`）。
   * 带值的宏：`MY_MACRO=1`（等价于`#define MY_MACRO 1`）。
 
@@ -57,8 +57,8 @@ target_compile_definitions(<target> [PUBLIC|PRIVATE|INTERFACE] <definitions>...)
 ```
 option(<variable> "<help_text>" [value])
 ```
-* **<variable>**：选项的名称，存储选项值的`CMake`变量（如`ENABLE_DEBUG`）。
-* **<help_text>**：选项的描述，显示在`CMake GUI`或`cmake -LA`的输出中，帮助用户理解选项的作用。
-* **[value]**：选项的默认值，通常为`ON`或`OFF`（布尔值）。如果未指定，默认值为`OFF`。
+* **variable**：选项的名称，存储选项值的`CMake`变量（如`ENABLE_DEBUG`）。
+* **help_text**：选项的描述，显示在`CMake GUI`或`cmake -LA`的输出中，帮助用户理解选项的作用。
+* **value**：选项的默认值，通常为`ON`或`OFF`（布尔值）。如果未指定，默认值为`OFF`。
 
 
